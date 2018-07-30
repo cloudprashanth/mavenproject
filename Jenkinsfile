@@ -6,7 +6,10 @@ node{
   def mvnHome = tool name: 'Maven', type: 'maven'
     sh "${mvnHome}/bin/mvn package"
   }
-  stage('Email Notification'){
-    mail bcc: '', body: 'How are you?', cc: '', from: '', replyTo: '', subject: 'HI', to: 'prashanth.devops6@gmail.com'
-  }
+  stage('SonarQube analysis') {
+    withSonarQubeEnv('sonar') {
+      def mvnHome = tool name: 'Maven', type: 'maven'
+      // requires SonarQube Scanner for Maven 3.2+
+      sh "${mvnHome}/bin/mvn sonar:sonar"
+    }
 }
