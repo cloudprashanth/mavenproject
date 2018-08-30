@@ -9,7 +9,7 @@ node{
   stage('SonarQube analysis') {
     withSonarQubeEnv('sonar') {
       def mvnHome = tool name: 'Maven', type: 'maven'
-      // requires SonarQube Scanner for Maven 3.2+ Yes
+      // requires SonarQube Scanner for Maven 3.2+
       sh "${mvnHome}/bin/mvn sonar:sonar"
     }
     }
