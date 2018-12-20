@@ -6,7 +6,7 @@ node{
   def mvnHome = tool name: 'Maven', type: 'maven'
     sh "${mvnHome}/bin/mvn package"
   }
-  stage('SonarQube analysis') {
+  stage('SonarQube analysis Ya') {
     withSonarQubeEnv('sonar') {
       def mvnHome = tool name: 'Maven', type: 'maven'
       // requires SonarQube Scanner for Maven 3.2+ 
